@@ -1,0 +1,51 @@
+Welcome Page #1:
+
+-Simple page with text reading "NAME OF APP"
+-Maybe a logo
+-maybe a loading screen
+-Button with text that reads "Where are you eating tonight?"
+-with on click function of button, it takes you to page #2
+
+
+Page #2:
+
+
+-On page load, run JS if function (navigator.geolocation.getcurrentposition) to ask the user for Geolocation; [?when to
+run]
+-if ("geolocation" in navigator){
+/* if geolocation is available */
+} else {
+/* geolocation is NOT available*/
+}
+-If users browser isn't compatible with JS geolocation function, notify user and then send form asking for user's zip
+code or city.
+-If form needs to be sent, pull API for list of zip codes? (Check)
+-Use .then to prevent rest of page from loading before grabbing Geolocation information
+-Once Geolocation is grabbed from the user, card with types of food appear
+-Within card, list options of "Asian, Mexican, Italian, American".
+-Have the page set up to input user location into 4square API.
+-Once user clicks on one of the options, based on user Geolocation the app pulls JSON object from foursquare API;
+-Set parameters on 4square object return to limit the amount of restaurants to 5
+-run a for loop of the 5 restaurants, and ranomize.length
+-Once loop runs, display randomized output to the screen.
+-Single output is shown on screen with restaurant information from 4square
+-On screen, 2 buttons are shown:
+"Reset Generator" & "Eat Here"
+-If user selects "Reset Generator", randomizer for loop is run again and user is shown another singular option from
+4square
+-If user selects "Eat Here", user is taken to Page 3.
+
+
+Page #3:
+-User selected "Eat Here" option.
+-Bc of this, user is directed to GoogleMaps with driving directions based on their geolocation or manually inputted zip
+code/city.
+-Maybe add an "end message" for complete user experience?
+
+
+
+Global Variables:
+
+foodGenres = ["Asian","Italian","Mexican","American"]
+locationInfo = User input for zip code and city
+foodPick = which button the user picks of the 4 food options
