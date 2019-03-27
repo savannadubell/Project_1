@@ -1,0 +1,46 @@
+body {
+    background: whitesmoke;
+}
+#subHeading {
+    font-family: 'Arial', sans-serif;
+    color: #0071BC;
+    font-weight: bold;
+}
+.displayed {
+    display: block; 
+    width: 240px;
+    margin-top: auto; 
+    margin-bottom: auto; 
+    margin-left: auto; 
+    margin-right: auto 
+}
+
+.form-group {
+    margin-top: auto; 
+    margin-bottom: auto; 
+    margin-left: 25px; 
+    margin-right: 25px;
+}
+
+.label {
+    font-family: 'Arial', sans-serif;
+    color: #0071BC;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.or {
+    text-align: center; 
+    font-family: 'Arial', sans-serif;
+    color: darkgray;
+    margin-top: 25px;
+}
+.btn-default {
+    background-color: #0071BC;
+	color: whitesmoke;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+	font-size: 18px;
+    margin-left: 25px;
+    margin-top: 25px;
+}
