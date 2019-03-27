@@ -1,0 +1,48 @@
+body {
+    background: whitesmoke;
+}
+#subHeading {
+    font-family: 'Arial', sans-serif;
+    color: #0071BC;
+    font-weight: bold;
+}
+.displayed {
+    display: block; 
+    width: 240px;
+    margin-top: auto; 
+    margin-bottom: auto; 
+    margin-left: auto; 
+    margin-right: auto 
+}
+.cusine-cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: auto; 
+    margin-bottom: auto; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.card{
+    display:block;
+    position: relative; 
+    overflow: auto; 
+    margin: 25px 25px 25px 25px; 
+}
+
+.card-text{
+    font-family: 'Arial', sans-serif; 
+    font-weight: bold;
+    text-align: center; 
+    color: #0071BC; 
+    font-size: 18px;
+}
+
+.card-body {
+    background-color: lightgray; 
+}
+
+.card-img-top{
+    width: 290px;
+    height: 190px;
+}
