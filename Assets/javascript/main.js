@@ -30,7 +30,9 @@ $(document).ready(function () {
             $(".cusine-cards").css("display", "flex");
             $(".location-form").css("display", "none");
             $(".change-heading").text("Time to Pick Your Cusine Type");
-            // 
+
+            console.log(long);
+            console.log(lat);
         }
     }
 
@@ -51,6 +53,9 @@ $(document).ready(function () {
         $(".cusine-cards").css("display", "flex");
         $(".location-form").css("display", "none");
         $(".change-heading").text("Time to Pick Your Cusine Type");
+
+        console.log(zip);
+        console.log(state);
     });
 
     $(".card").on("click", function () {
