@@ -20,15 +20,21 @@ $(document).ready(function () {
             error.text("Geolocation is not supported by this browser.");
         }
     }
-
+    //Store user location in lat & long variables
     function showPosition(position) {
         lat = position.coords.latitude;
         long = position.coords.longitude;
-        console.log(long)
-        console.log(lat)
+
+        //If user clicks allow position, clear form and show cuisine cards
+        if (lat !== undefined) {
+            $(".cusine-cards").css("display", "flex");
+            $(".location-form").css("display", "none");
+            $(".change-heading").text("Time to Pick Your Cusine Type");
+            // 
+        }
     }
 
-    //Get user location when the <body> has an id of "userLocation" (thirdpage.html)
+    //Get user location when the <body> has an id of "userLocation" (secondpage.html)
     if ($('body#userLocation').length > 0) {
         getLocation();
     }
@@ -38,10 +44,13 @@ $(document).ready(function () {
 
         event.preventDefault();
 
-        zip = $("#zip").val().trim();
+        zip = parseInt($("#zip").val().trim());
         state = $("#state").val().trim();
-        console.log(zip);
-        console.log(state);
+
+        //On form submit clear the form and show cuisine cards
+        $(".cusine-cards").css("display", "flex");
+        $(".location-form").css("display", "none");
+        $(".change-heading").text("Time to Pick Your Cusine Type");
     });
 
     $(".card").on("click", function () {
