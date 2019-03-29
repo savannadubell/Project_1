@@ -31,8 +31,9 @@ $(document).ready(function () {
             $(".location-form").css("display", "none");
             $(".change-heading").text("Time to Pick Your Cusine Type");
 
-            console.log(long);
             console.log(lat);
+            console.log(long);
+
         }
     }
 
@@ -59,16 +60,16 @@ $(document).ready(function () {
     });
 
     $(".card").on("click", function () {
-        var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=1213&entity_type=city&q=" + cuisine + "%20%2B%20random&count=1";
-
+        var queryURL = "";
         var cuisine = ($(this).attr("id"));
         console.log(cuisine);
-        // $.ajax({
-        //     url: queryURL,
-        //     method: "GET"
-        // }).then(function (response) {
 
-        // })
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
+        });
 
 
     })
