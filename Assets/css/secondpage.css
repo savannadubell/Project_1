@@ -80,3 +80,7 @@ body {
     width: 290px;
     height: 190px;
 }
+
+#chosen-restaurant {
+margin: 5 auto;
+}

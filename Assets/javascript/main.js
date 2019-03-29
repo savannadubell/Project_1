@@ -59,11 +59,14 @@ $(document).ready(function () {
         console.log(zip);
         console.log(state);
     });
+
+
     $(".card").on("click", function () {
         var cuisine = ($(this).attr("id"));
-        var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=1213&entity_type=city&cuisines=" + cuisine;
-        // //%20%2B%20random
-        // var cuisine = ($(this).attr("id"));
+        var queryURL = "https://developers.zomato.com/api/v2.1/search?start=0&count=10&lat=" + lat + "&lon=" + long + "&radius=5000&cuisines=" + cuisine + "&sort=real_distance&order=asc&apikey=0ce7b31696dc922375b5bd5b125d26af";
+
+        console.log(cuisine);
+
         $.ajax({
             url: queryURL,
             method: "GET",
@@ -78,6 +81,7 @@ $(document).ready(function () {
 
             var startDiv = $('<div>');
             startDiv.addClass("card");
+            startDiv.attr("id", "chosen-restaurant");
 
             var img = $('<img>');
             img.addClass("card-img-top");
@@ -90,11 +94,17 @@ $(document).ready(function () {
             pClass.addClass("card-text");
             pClass.text(response.restaurants[0].restaurant.name);
 
+            var pClass2 = $('<p>');
+            pClass2.addClass("card-text");
+            pClass2.text(response.restaurants[0].restaurant.location.address);
+
             //connecting all elements together
-            startDiv.append(img).append(divTwo).append(pClass);
+            startDiv.append(img).append(divTwo).append(pClass).append(pClass2);
 
             //print to page
             $('.cusine-cards').append(startDiv);
+
+
 
 
             /*
