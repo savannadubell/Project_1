@@ -4,7 +4,7 @@ $(document).ready(function () {
     setTimeout(function () {
         $('body').addClass('loaded');
     }, 2000);
-});
+    
     //Location variables
     var lat
     var long
