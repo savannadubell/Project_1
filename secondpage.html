@@ -1,160 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-        <title>Pick Cusine</title>
+    <title>Pick Cuisine</title>
 
-        <!-- Jquery library -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    <!-- Jquery library -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
         </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <!-- Bootstrap CDN -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
         </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
-        <script src="Assets/javascript/main.js"></script>
-        <link href="https://fonts.google.com/specimen/Suez+One?selection.family=Suez+One" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="Assets/CSS/secondpage.css">
-    </head>
+    <script src="Assets/javascript/main.js"></script>
+    <link href="https://fonts.google.com/specimen/Suez+One?selection.family=Suez+One" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="Assets/CSS/secondpage.css">
+</head>
 
-    <body id="userLocation">
-        <div class="jumbotron">
-            <IMG class="displayed" src="Assets/images/FeedMe.png">
-            <h2 class="text-center change-heading" id="subHeading">Tell Us Your Location</h2>
+<body id="userLocation">
+    <div class="jumbotron">
+        <IMG class="displayed" src="Assets/images/FeedMe.png">
+        <h2 class="text-center change-heading" id="subHeading">Tell Us Your Location</h2>
+    </div>
+
+    <p class="geoError"></p>
+
+    <section class="location-form">
+        <form>
+            <div class="form-group">
+                <label for="zip" class="label">Zip Code</label>
+                <input type="zipcode" class="form-control" id="zip" placeholder="90210">
+            </div>
+            <div>
+                <p class="or">or pick state from the dropdown</p>
+            </div>
+            <div class="form-group">
+                <label for="state" class="label">State</label>
+                <select class="form-control" id="state">
+                    <option>Alabama</option>
+                    <option>Alaska</option>
+                    <option>Arizonia</option>
+                    <option>Arkansas</option>
+                    <option>California</option>
+                    <option>Colorado</option>
+                    <option>Connecticut</option>
+                    <option>Delaware</option>
+                    <option>Florida</option>
+                    <option>Georgia</option>
+                    <option>Hawaii</option>
+                    <option>Idaho</option>
+                    <option>Illinois</option>
+                    <option>Indiana</option>
+                    <option>Iowa</option>
+                    <option>Kansas</option>
+                    <option>Kentucky</option>
+                    <option>Lousiana</option>
+                    <option>Maine</option>
+                    <option>Maryland</option>
+                    <option>Massachusetts</option>
+                    <option>Michigan</option>
+                    <option>Minnesota</option>
+                    <option>Mississippi</option>
+                    <option>Missouri</option>
+                    <option>Montana</option>
+                    <option>Nebraska</option>
+                    <option>Nevada</option>
+                    <option>New Hampshire</option>
+                    <option>New Jersey</option>
+                    <option>New Mexico</option>
+                    <option>New York</option>
+                    <option>North Carolina</option>
+                    <option>North Dakota</option>
+                    <option>Ohio</option>
+                    <option>Oklahoma</option>
+                    <option>Oregon</option>
+                    <option>Pennsylvania</option>
+                    <option>Rhode Island</option>
+                    <option>South Carolina</option>
+                    <option>South Dakota</option>
+                    <option>Tennessee</option>
+                    <option>Texas</option>
+                    <option>Utah</option>
+                    <option>Vermont</option>
+                    <option>Virginia</option>
+                    <option>Washington</option>
+                    <option>West Virginia</option>
+                    <option>Wisconsin</option>
+                    <option>Wyoming</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-default" id="submit">Feed Me</button>
+
+        </form>
+    </section>
+
+    <section class="cusine-cards">
+        <div class="card" id="american" style="width: 18rem;">
+            <img class="card-img-top"
+                src="https://cdn.vox-cdn.com/uploads/chorus_image/image/47193854/20150915-_Upland_Burger_3.0.0.jpg"
+                alt="american-food">
+            <div class="card-body">
+                <p class="card-text">AMERICAN FOOD</p>
+            </div>
         </div>
-
-        <p class="geoError"></p>
-
-        <section class="location-form">
-            <form>
-                <div class="form-group">
-                    <label for="zip" class="label">Zip Code</label>
-                    <input type="zipcode" class="form-control" id="zip" placeholder="90210">
-                </div>
-                <div>
-                    <p class="or">or pick state from the dropdown</p>
-                </div>
-                <div class="form-group">
-                    <label for="state" class="label">State</label>
-                    <select class="form-control" id="state">
-                        <option>Alabama</option>
-                        <option>Alaska</option>
-                        <option>Arizonia</option>
-                        <option>Arkansas</option>
-                        <option>California</option>
-                        <option>Colorado</option>
-                        <option>Connecticut</option>
-                        <option>Delaware</option>
-                        <option>Florida</option>
-                        <option>Georgia</option>
-                        <option>Hawaii</option>
-                        <option>Idaho</option>
-                        <option>Illinois</option>
-                        <option>Indiana</option>
-                        <option>Iowa</option>
-                        <option>Kansas</option>
-                        <option>Kentucky</option>
-                        <option>Lousiana</option>
-                        <option>Maine</option>
-                        <option>Maryland</option>
-                        <option>Massachusetts</option>
-                        <option>Michigan</option>
-                        <option>Minnesota</option>
-                        <option>Mississippi</option>
-                        <option>Missouri</option>
-                        <option>Montana</option>
-                        <option>Nebraska</option>
-                        <option>Nevada</option>
-                        <option>New Hampshire</option>
-                        <option>New Jersey</option>
-                        <option>New Mexico</option>
-                        <option>New York</option>
-                        <option>North Carolina</option>
-                        <option>North Dakota</option>
-                        <option>Ohio</option>
-                        <option>Oklahoma</option>
-                        <option>Oregon</option>
-                        <option>Pennsylvania</option>
-                        <option>Rhode Island</option>
-                        <option>South Carolina</option>
-                        <option>South Dakota</option>
-                        <option>Tennessee</option>
-                        <option>Texas</option>
-                        <option>Utah</option>
-                        <option>Vermont</option>
-                        <option>Virginia</option>
-                        <option>Washington</option>
-                        <option>West Virginia</option>
-                        <option>Wisconsin</option>
-                        <option>Wyoming</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="btn btn-default" id="submit">Feed Me</button>
-
-            </form>
-        </section>
-
-        <section class="cusine-cards">
-            <div class="card" id="american" style="width: 18rem;">
-                <img class="card-img-top"
-                    src="https://cdn.vox-cdn.com/uploads/chorus_image/image/47193854/20150915-_Upland_Burger_3.0.0.jpg"
-                    alt="american-food">
-                <div class="card-body">
-                    <p class="card-text">AMERICAN FOOD</p>
-                </div>
+        <div class="card" id="chinese" style="width: 18rem;">
+            <img class="card-img-top"
+                src="https://i2.wp.com/bestlifeonline.com/wp-content/uploads/2018/01/chinese-takeout-box-noodles.jpg?fit=500%2C333&ssl=1"
+                alt="chinese-food">
+            <div class="card-body">
+                <p class="card-text">CHINESE FOOD</p>
             </div>
-            <div class="card" id="chinese" style="width: 18rem;">
-                <img class="card-img-top"
-                    src="https://i2.wp.com/bestlifeonline.com/wp-content/uploads/2018/01/chinese-takeout-box-noodles.jpg?fit=500%2C333&ssl=1"
-                    alt="chinese-food">
-                <div class="card-body">
-                    <p class="card-text">CHINESE FOOD</p>
-                </div>
+        </div>
+        <div class="card" id="japanese" style="width: 18rem;">
+            <img class="card-img-top"
+                src="https://media.istockphoto.com/photos/the-composition-of-nigiri-sushi-picture-id473823084?k=6&m=473823084&s=612x612&w=0&h=hk6GT2VyWYb1xFwtatkr2DchDZuGMsd8dD7XZbPfo5c="
+                alt="japanese-food">
+            <div class="card-body">
+                <p class="card-text">JAPANESE FOOD</p>
             </div>
-            <div class="card" id="japanese" style="width: 18rem;">
-                <img class="card-img-top"
-                    src="https://media.istockphoto.com/photos/the-composition-of-nigiri-sushi-picture-id473823084?k=6&m=473823084&s=612x612&w=0&h=hk6GT2VyWYb1xFwtatkr2DchDZuGMsd8dD7XZbPfo5c="
-                    alt="japanese-food">
-                <div class="card-body">
-                    <p class="card-text">JAPANESE FOOD</p>
-                </div>
+        </div>
+        <div class="card" id="italian" style="width: 18rem;">
+            <img class="card-img-top" src="https://cdn.cnn.com/cnnnext/dam/assets/190107114340-pizza-slice.jpg"
+                alt="italian-food">
+            <div class="card-body">
+                <p class="card-text">ITALIAN FOOD</p>
             </div>
-            <div class="card" id="italian" style="width: 18rem;">
-                <img class="card-img-top" src="https://cdn.cnn.com/cnnnext/dam/assets/190107114340-pizza-slice.jpg"
-                    alt="italian-food">
-                <div class="card-body">
-                    <p class="card-text">ITALIAN FOOD</p>
-                </div>
+        </div>
+        <div class="card" id="thai" style="width: 18rem;">
+            <img class="card-img-top"
+                src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/slideshows/best_and_worst_thai_dishes_slideshow/1800x1200_slideshow_best_and_worst_thai_dishes_for_your_health.jpg"
+                alt="thai-food">
+            <div class="card-body">
+                <p class="card-text">THAI FOOD</p>
             </div>
-            <div class="card" id="thai" style="width: 18rem;">
-                <img class="card-img-top"
-                    src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/slideshows/best_and_worst_thai_dishes_slideshow/1800x1200_slideshow_best_and_worst_thai_dishes_for_your_health.jpg"
-                    alt="thai-food">
-                <div class="card-body">
-                    <p class="card-text">THAI FOOD</p>
-                </div>
+        </div>
+        <div class="card" id="mexican" style="width: 18rem;">
+            <img class="card-img-top" src="https://twtx.co/wp-content/uploads/2017/07/Ritas-Enchiladas-1600x800.jpg"
+                alt="mexican-food">
+            <div class="card-body">
+                <p class="card-text">MEXICAN FOOD</p>
             </div>
-            <div class="card" id="mexican" style="width: 18rem;">
-                <img class="card-img-top" src="https://twtx.co/wp-content/uploads/2017/07/Ritas-Enchiladas-1600x800.jpg"
-                    alt="mexican-food">
-                <div class="card-body">
-                    <p class="card-text">MEXICAN FOOD</p>
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
 
-    </body>
+</body>
 
 </html>
