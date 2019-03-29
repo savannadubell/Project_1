@@ -1,10 +1,11 @@
 $(document).ready(function () {
+    //var feedMe = $(".feed-me");
 
     // Preloader dissapears after 2 seconds
     setTimeout(function () {
         $('body').addClass('loaded');
     }, 2000);
-    
+
     //Location variables
     var lat
     var long
@@ -68,13 +69,78 @@ $(document).ready(function () {
 
         $.ajax({
             url: queryURL,
-            method: "GET"
+            method: "GET",
+            headers: {
+                "user-key": "c2f8ca36527489e90ec9ce18254ed96e",
+            }
         }).then(function (response) {
-            var name = response.restaurants[0].restaurant.name;
-            console.log(name);
             console.log(response)
-        });
+            $('.cusine-cards').empty()
+            //display restaurant that was chosen
+            //display buttons of "go here" and "choose a different option for me"
+
+            var startDiv = $('<div>');
+            startDiv.addClass("card");
+            startDiv.attr("id", "chosen-restaurant");
+
+            var img = $('<img>');
+            img.addClass("card-img-top");
+            img.attr("src", response.restaurants[0].restaurant.featured_image);
+
+            var divTwo = $('<div>');
+            divTwo.addClass("card-body");
+
+            var pClass = $('<p>');
+            pClass.addClass("card-text");
+            pClass.text(response.restaurants[0].restaurant.name);
+
+            var pClass2 = $('<p>');
+            pClass2.addClass("card-text");
+            pClass2.text(response.restaurants[0].restaurant.location.address);
+
+            //connecting all elements together
+            startDiv.append(img).append(divTwo).append(pClass).append(pClass2);
+
+            //print to page
+            $('.cusine-cards').append(startDiv);
 
 
-    })
+
+
+            /*
+            
+                    <div class="card" id="italian" style="width: 18rem;">
+                        <img class="card-img-top" src="https://cdn.cnn.com/cnnnext/dam/assets/190107114340-pizza-slice.jpg"
+                            alt="italian-food">
+                        <div class="card-body">
+                            <p class="card-text">ITALIAN FOOD</p>
+                        </div>
+                    </div>
+            
+            */
+
+
+
+
+
+
+
+
+
+
+        }).fail(function (jqXHR, textStatus) {
+            console.log(JSON.stringify(jqXHR))
+        })
+
+
+    });
 });
+
+//empty page after user chooses cuisine type
+$('.cusine-cards').empty()
+
+//displaying on-click functions to page
+
+
+
+//append
