@@ -6,24 +6,23 @@ $(document).ready(function () {
     }, 2000);
 });
 
-$(".card").on("click", function () {
-    var cuisine = ($(this).attr("id"));
-    var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=1213&entity_type=city&cuisines=" + cuisine;
-    // //%20%2B%20random
-    // var cuisine = ($(this).attr("id"));
-    $.ajax({
-        url: queryURL,
-        method: "GET",
-        headers: {
-            "user-key": "c2f8ca36527489e90ec9ce18254ed96e",
-        }
-    }).then(function (response) {
-        console.log(response)
+    $(".card").on("click", function () {
+        var cuisine = ($(this).attr("id"));
+        var queryURL = "https://developers.zomato.com/api/v2.1/search?start=0&count=10&lat=" + lat + "&lon=" + long + "&radius=5000&cuisines=" + cuisine + "&sort=real_distance&order=asc&apikey=0ce7b31696dc922375b5bd5b125d26af";
 
-    }).fail(function (jqXHR, textStatus) {
-        console.log(JSON.stringify(jqXHR))
+        console.log(cuisine);
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            var name = response.restaurants[0].restaurant.name;
+            console.log(name);
+            console.log(response)
+        });
+
+
     })
-
 
 });
     //Location variables
@@ -80,4 +79,22 @@ $(".card").on("click", function () {
         console.log(state);
     });
 
+
+    $(".card").on("click", function () {
+        var cuisine = ($(this).attr("id"));
+        var queryURL = "https://developers.zomato.com/api/v2.1/search?start=0&count=10&lat=" + lat + "&lon=" + long + "&radius=5000&cuisines=" + cuisine + "&sort=real_distance&order=asc&apikey=0ce7b31696dc922375b5bd5b125d26af";
+
+        console.log(cuisine);
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            var name = response.restaurants[0].restaurant.name;
+            console.log(name);
+            console.log(response)
+        });
+
+
+    })
 });
