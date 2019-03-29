@@ -5,26 +5,6 @@ $(document).ready(function () {
         $('body').addClass('loaded');
     }, 2000);
 });
-
-    $(".card").on("click", function () {
-        var cuisine = ($(this).attr("id"));
-        var queryURL = "https://developers.zomato.com/api/v2.1/search?start=0&count=10&lat=" + lat + "&lon=" + long + "&radius=5000&cuisines=" + cuisine + "&sort=real_distance&order=asc&apikey=0ce7b31696dc922375b5bd5b125d26af";
-
-        console.log(cuisine);
-
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function (response) {
-            var name = response.restaurants[0].restaurant.name;
-            console.log(name);
-            console.log(response)
-        });
-
-
-    })
-
-});
     //Location variables
     var lat
     var long
