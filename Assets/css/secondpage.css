@@ -64,6 +64,11 @@ body {
     margin: 25px 25px 25px 25px;
 }
 
+.card:hover {
+    opacity: 0.75;
+
+}
+
 .card-text {
     font-family: 'Arial', sans-serif;
     font-weight: bold;
@@ -83,4 +88,13 @@ body {
 
 #chosen-restaurant {
     margin: 5 auto;
+}
+
+.buttons {
+    background-color: #0071BC;
+    color: white;
+}
+
+.change-heading {
+    margin-top: 18px;
 }
