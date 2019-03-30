@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    //var feedMe = $(".feed-me");
 
     // Preloader dissapears after 2 seconds
     setTimeout(function () {
@@ -34,7 +33,6 @@ $(document).ready(function () {
 
             console.log(lat);
             console.log(long);
-
         }
     }
 
@@ -48,24 +46,41 @@ $(document).ready(function () {
 
         event.preventDefault();
 
-        zip = parseInt($("#zip").val().trim());
-        state = $("#state").val().trim();
+        var street = $("#street").val().trim();
+        var city = $("#city").val().trim();
+        var state = $("#state").val().trim();
 
-        //On form submit clear the form and show cuisine cards
-        $(".cusine-cards").css("display", "flex");
-        $(".location-form").css("display", "none");
-        $(".change-heading").text("Time to Pick Your Cusine Type");
+        var apiKey = "AIzaSyASIXS_BduVFQvDTnhbYSGXVnsKUS6uRyI";
+        var queryURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${street},${city},${state}&key=${apiKey}`;
 
-        console.log(zip);
-        console.log(state);
+        $.ajax({
+            url: queryURL,
+            method: "GET",
+        }).then(function (response) {
+
+            lat = (response.results[0].geometry.location.lat);
+            long = (response.results[0].geometry.location.lng);
+
+            console.log(lat);
+            console.log(long);
+
+            // On form submit clear the form and show cuisine cards
+            $(".cusine-cards").css("display", "flex");
+            $(".location-form").css("display", "none");
+            $(".change-heading").text("Time to Pick Your Cusine Type");
+
+        }).fail(function (jqXHR, textStatus) {
+            console.log(JSON.stringify(jqXHR));
+        });
     });
 
 
     $(".card").on("click", function () {
         var cuisine = ($(this).attr("id"));
-        var queryURL = "https://developers.zomato.com/api/v2.1/search?start=0&count=10&lat=" + lat + "&lon=" + long + "&radius=5000&cuisines=" + cuisine + "&sort=real_distance&order=asc&apikey=0ce7b31696dc922375b5bd5b125d26af";
+        var queryURL = "https://developers.zomato.com/api/v2.1/search?start=0&count=20&lat=" + lat + "&lon=" + long + "&radius=5000&cuisines=" + cuisine + "&sort=real_distance&order=asc";
 
-        console.log(cuisine);
+        //Counter for choosing another restaurant
+        var counter = 0;
 
         $.ajax({
             url: queryURL,
@@ -74,73 +89,94 @@ $(document).ready(function () {
                 "user-key": "c2f8ca36527489e90ec9ce18254ed96e",
             }
         }).then(function (response) {
-            console.log(response)
-            $('.cusine-cards').empty()
-            //display restaurant that was chosen
-            //display buttons of "go here" and "choose a different option for me"
 
-            var startDiv = $('<div>');
-            startDiv.addClass("card");
-            startDiv.attr("id", "chosen-restaurant");
+            console.log(response);
 
-            var img = $('<img>');
-            img.addClass("card-img-top");
-            img.attr("src", response.restaurants[0].restaurant.featured_image);
+            $(".change-heading").text("Time to Choose Somewhere to Eat");
 
-            var divTwo = $('<div>');
-            divTwo.addClass("card-body");
+            //Prints new restaurant
+            function newRestaurant() {
 
-            var pClass = $('<p>');
-            pClass.addClass("card-text");
-            pClass.text(response.restaurants[0].restaurant.name);
+                $('.cusine-cards').empty();
 
-            var pClass2 = $('<p>');
-            pClass2.addClass("card-text");
-            pClass2.text(response.restaurants[0].restaurant.location.address);
+                var startDiv = $('<div>');
+                startDiv.addClass("card");
+                startDiv.attr("id", "chosen-restaurant");
 
-            //connecting all elements together
-            startDiv.append(img).append(divTwo).append(pClass).append(pClass2);
+                var img = $('<img>');
+                img.addClass("card-img-top");
+                img.attr("src", response.restaurants[counter].restaurant.featured_image);
 
-            //print to page
-            $('.cusine-cards').append(startDiv);
+                var divTwo = $('<div>');
+                divTwo.addClass("card-body");
 
+                var pClass = $('<p>');
+                pClass.addClass("card-text");
+                pClass.text(response.restaurants[counter].restaurant.name);
 
+                var pClass2 = $('<p>');
+                pClass2.addClass("card-text");
+                pClass2.text(response.restaurants[counter].restaurant.location.address);
 
+                var selectButton = $('<button>');
+                selectButton.addClass('btn btn-success select-button');
+                selectButton.attr('id', 'select');
+                selectButton.text('Go Here');
 
-            /*
-            
-                    <div class="card" id="italian" style="width: 18rem;">
-                        <img class="card-img-top" src="https://cdn.cnn.com/cnnnext/dam/assets/190107114340-pizza-slice.jpg"
-                            alt="italian-food">
-                        <div class="card-body">
-                            <p class="card-text">ITALIAN FOOD</p>
-                        </div>
-                    </div>
-            
-            */
+                var nextButton = $('<button>');
+                nextButton.addClass('btn btn-info next-button');
+                nextButton.attr('id', 'next');
+                nextButton.text('Next Option');
 
+                var backButton = $('<button>');
+                backButton.addClass('btn btn-secondary back-button');
+                backButton.attr('id', 'back');
+                backButton.text('Previous Option');
 
+                //connecting all elements together
+                startDiv.append(img, divTwo, pClass, pClass2, selectButton, nextButton, backButton);
 
+                //print to page
+                $('.cusine-cards').append(startDiv);
+            };
 
+            newRestaurant();
 
+            //Make something happen when you click on "Go Here" button
+            $(document).on("click", "#select", function () {
 
+            });
 
+            //Chooses next restaurant when clicked
+            $(document).on("click", "#next", function () {
 
+                if (counter === 19) {
+                    //Bring back to cuisine types page?
+                    console.log("out of choices");
+                    return
+                };
+
+                counter++;
+                newRestaurant();
+            });
+
+            //Chooses previous restaurant when clicked
+            $(document).on("click", "#back", function () {
+
+                if (counter === 0) {
+                    console.log("first choice");
+                    return
+                };
+
+                counter--;
+                newRestaurant();
+            });
 
 
         }).fail(function (jqXHR, textStatus) {
-            console.log(JSON.stringify(jqXHR))
-        })
-
-
+            console.log(JSON.stringify(jqXHR));
+        });
     });
+
+
 });
-
-//empty page after user chooses cuisine type
-$('.cusine-cards').empty()
-
-//displaying on-click functions to page
-
-
-
-//append
