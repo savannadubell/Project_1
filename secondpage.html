@@ -27,7 +27,7 @@
 <body id="userLocation">
     <div class="jumbotron">
         <IMG class="displayed" src="Assets/images/FeedMe.png">
-        <h2 class="text-center change-heading" id="subHeading">What Is Your Location</h2>
+        <h2 class="text-center change-heading" id="subHeading">What Is Your Location?</h2>
     </div>
 
     <p class="geoError"></p>
@@ -35,17 +35,17 @@
     <section class="location-form">
         <form>
             <div class="form-group">
-                <label for="street" class="label">Street</label>
+                <label for="street" class="label">Street Number</label>
                 <input type="text" class="form-control" id="street" placeholder="123 Main Street">
             </div>
             <div class="form-group">
                 <label for="city" class="label">City</label>
-                <input type="text" class="form-control" id="city" placeholder="New York City">
+                <input type="text" class="form-control" id="city" placeholder="Salt Lake City">
             </div>
 
             <div class="form-group">
                 <label for="state" class="label">State</label>
-                <select class="form-control" id="state">
+                <select class="form-control" id="state" placeholder="Utah">
                     <option>Alabama</option>
                     <option>Alaska</option>
                     <option>Arizonia</option>
@@ -89,7 +89,7 @@
                     <option>South Dakota</option>
                     <option>Tennessee</option>
                     <option>Texas</option>
-                    <option>Utah</option>
+                    <option selected>Utah</option>
                     <option>Vermont</option>
                     <option>Virginia</option>
                     <option>Washington</option>
@@ -105,53 +105,74 @@
     </section>
 
     <section class="cusine-cards">
-        <div class="card" id="1" style="width: 18rem;">
-            <img class="card-img-top"
-                src="https://cdn.vox-cdn.com/uploads/chorus_image/image/47193854/20150915-_Upland_Burger_3.0.0.jpg"
-                alt="american-food">
-            <div class="card-body">
-                <p class="card-text">AMERICAN FOOD</p>
-            </div>
-        </div>
-        <div class="card" id="25" style="width: 18rem;">
-            <img class="card-img-top"
-                src="https://i2.wp.com/bestlifeonline.com/wp-content/uploads/2018/01/chinese-takeout-box-noodles.jpg?fit=500%2C333&ssl=1"
-                alt="chinese-food">
-            <div class="card-body">
-                <p class="card-text">CHINESE FOOD</p>
-            </div>
-        </div>
-        <div class="card" id="60" style="width: 18rem;">
-            <img class="card-img-top"
-                src="https://media.istockphoto.com/photos/the-composition-of-nigiri-sushi-picture-id473823084?k=6&m=473823084&s=612x612&w=0&h=hk6GT2VyWYb1xFwtatkr2DchDZuGMsd8dD7XZbPfo5c="
-                alt="japanese-food">
-            <div class="card-body">
-                <p class="card-text">JAPANESE FOOD</p>
-            </div>
-        </div>
-        <div class="card" id="55" style="width: 18rem;">
-            <img class="card-img-top" src="https://cdn.cnn.com/cnnnext/dam/assets/190107114340-pizza-slice.jpg"
-                alt="italian-food">
-            <div class="card-body">
-                <p class="card-text">ITALIAN FOOD</p>
-            </div>
-        </div>
-        <div class="card" id="95" style="width: 18rem;">
-            <img class="card-img-top"
-                src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/slideshows/best_and_worst_thai_dishes_slideshow/1800x1200_slideshow_best_and_worst_thai_dishes_for_your_health.jpg"
-                alt="thai-food">
-            <div class="card-body">
-                <p class="card-text">THAI FOOD</p>
-            </div>
-        </div>
-        <div class="card" id="73" style="width: 18rem;">
-            <img class="card-img-top" src="https://twtx.co/wp-content/uploads/2017/07/Ritas-Enchiladas-1600x800.jpg"
-                alt="mexican-food">
-            <div class="card-body">
-                <p class="card-text">MEXICAN FOOD</p>
-            </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card" id="1" style="width: 18rem;">
+                        <img class="card-img-top"
+                            src="https://cdn.vox-cdn.com/uploads/chorus_image/image/47193854/20150915-_Upland_Burger_3.0.0.jpg"
+                            alt="american-food">
+                        <div class="card-body">
+                            <p class="card-text">AMERICAN FOOD</p>
+                        </div>
+                    </div>
+                </div>
 
-        </div>
+                <div class="col-sm-4">
+                    <div class="card" id="25" style="width: 18rem;">
+                        <img class="card-img-top"
+                            src="https://i2.wp.com/bestlifeonline.com/wp-content/uploads/2018/01/chinese-takeout-box-noodles.jpg?fit=500%2C333&ssl=1"
+                            alt="chinese-food">
+                        <div class="card-body">
+                            <p class="card-text">CHINESE FOOD</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card" id="60" style="width: 18rem;">
+                        <img class="card-img-top"
+                            src="https://media.istockphoto.com/photos/the-composition-of-nigiri-sushi-picture-id473823084?k=6&m=473823084&s=612x612&w=0&h=hk6GT2VyWYb1xFwtatkr2DchDZuGMsd8dD7XZbPfo5c="
+                            alt="japanese-food">
+                        <div class="card-body">
+                            <p class="card-text">JAPANESE FOOD</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card" id="55" style="width: 18rem;">
+                        <img class="card-img-top"
+                            src="https://cdn.cnn.com/cnnnext/dam/assets/190107114340-pizza-slice.jpg"
+                            alt="italian-food">
+                        <div class="card-body">
+                            <p class="card-text">ITALIAN FOOD</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card" id="95" style="width: 18rem;">
+                        <img class="card-img-top"
+                            src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/slideshows/best_and_worst_thai_dishes_slideshow/1800x1200_slideshow_best_and_worst_thai_dishes_for_your_health.jpg"
+                            alt="thai-food">
+                        <div class="card-body">
+                            <p class="card-text">THAI FOOD</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card" id="73" style="width: 18rem;">
+                        <img class="card-img-top"
+                            src="https://twtx.co/wp-content/uploads/2017/07/Ritas-Enchiladas-1600x800.jpg"
+                            alt="mexican-food">
+                        <div class="card-body">
+                            <p class="card-text">MEXICAN FOOD</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 

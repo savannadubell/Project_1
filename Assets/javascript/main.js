@@ -29,7 +29,7 @@ $(document).ready(function () {
         if (lat !== undefined) {
             $(".cusine-cards").css("display", "flex");
             $(".location-form").css("display", "none");
-            $(".change-heading").text("Time to Pick Your Cusine Type");
+            $(".change-heading").text("Pick Your Cuisine Below!");
 
             console.log(lat);
             console.log(long);
@@ -67,7 +67,7 @@ $(document).ready(function () {
             // On form submit clear the form and show cuisine cards
             $(".cusine-cards").css("display", "flex");
             $(".location-form").css("display", "none");
-            $(".change-heading").text("Time to Pick Your Cusine Type");
+            $(".change-heading").text("Time to Pick Your Cuisine Type!");
 
         }).fail(function (jqXHR, textStatus) {
             console.log(JSON.stringify(jqXHR));
@@ -92,15 +92,17 @@ $(document).ready(function () {
 
             console.log(response);
 
-            $(".change-heading").text("Time to Choose Somewhere to Eat");
+            $(".change-heading").text("Pick Your Cuisine Below!");
 
             //Prints new restaurant
             function newRestaurant() {
 
                 $('.cusine-cards').empty();
 
+                var url = response.restaurants[counter].restaurant.url;
+
                 var startDiv = $('<div>');
-                startDiv.addClass("card");
+                startDiv.addClass("card response");
                 startDiv.attr("id", "chosen-restaurant");
 
                 var img = $('<img>');
@@ -118,34 +120,38 @@ $(document).ready(function () {
                 pClass2.addClass("card-text");
                 pClass2.text(response.restaurants[counter].restaurant.location.address);
 
+                var pClass3 = $('<p>');
+                pClass3.addClass("card-text");
+                pClass3.text(response.restaurants[counter].restaurant.location.address);
+
+                var link = $('<a>');
+                link.attr('href', url);
+
                 var selectButton = $('<button>');
-                selectButton.addClass('btn btn-success select-button');
+                selectButton.addClass('btn buttons select-button text-center');
                 selectButton.attr('id', 'select');
                 selectButton.text('Go Here');
 
                 var nextButton = $('<button>');
-                nextButton.addClass('btn btn-info next-button');
+                nextButton.addClass('btn buttons next-button text-center');
                 nextButton.attr('id', 'next');
                 nextButton.text('Next Option');
 
                 var backButton = $('<button>');
-                backButton.addClass('btn btn-secondary back-button');
+                backButton.addClass('btn btn-secondary back-button text-center');
                 backButton.attr('id', 'back');
                 backButton.text('Previous Option');
 
                 //connecting all elements together
-                startDiv.append(img, divTwo, pClass, pClass2, selectButton, nextButton, backButton);
+                link.append(selectButton);
+                divTwo.append(pClass, pClass2, link, backButton, nextButton);
+                startDiv.append(img, divTwo);
 
                 //print to page
                 $('.cusine-cards').append(startDiv);
             };
 
             newRestaurant();
-
-            //Make something happen when you click on "Go Here" button
-            $(document).on("click", "#select", function () {
-
-            });
 
             //Chooses next restaurant when clicked
             $(document).on("click", "#next", function () {
