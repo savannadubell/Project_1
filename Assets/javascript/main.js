@@ -72,6 +72,7 @@ $(document).ready(function () {
         });
     });
 
+    //When user clicks on cuisine they want
     $(".card").on("click", function () {
 
         var cuisine = ($(this).attr("id"));
@@ -93,6 +94,7 @@ $(document).ready(function () {
             var resList = [];
             var resAddress = [];
 
+            //Grabs name and address of restaurants from zomato api
             for (i = 0; i < response.restaurants.length; i++) {
                 resList.push(response.restaurants[i].restaurant.name);
                 resAddress.push(response.restaurants[i].restaurant.location.address + " " + response.restaurants[i].restaurant.location.locality);
@@ -157,7 +159,7 @@ $(document).ready(function () {
                 startDiv.addClass("card");
                 startDiv.attr("id", "chosen-restaurant");
 
-                //Call google places function
+                //Call google places function to get picture
                 initMap();
 
                 var url = response.restaurants[counter].restaurant.url;
@@ -196,8 +198,6 @@ $(document).ready(function () {
                 divTwo.append(pClass, pClass2, link, backButton, nextButton);
                 startDiv.append(divTwo);
 
-
-
                 //print to page
                 $('.cusine-cards').append(startDiv);
             };
@@ -226,11 +226,8 @@ $(document).ready(function () {
                 newRestaurant();
             });
 
-
         }).fail(function (jqXHR, textStatus) {
             console.log(JSON.stringify(jqXHR));
         });
     });
-
-
 });
