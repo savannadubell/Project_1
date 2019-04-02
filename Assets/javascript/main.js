@@ -8,8 +8,6 @@ $(document).ready(function () {
     //Location variables
     var lat
     var long
-    var zip
-    var state
 
     //Ask user for their location
     function getLocation() {
@@ -74,8 +72,8 @@ $(document).ready(function () {
         });
     });
 
-
     $(".card").on("click", function () {
+
         var cuisine = ($(this).attr("id"));
         var queryURL = "https://developers.zomato.com/api/v2.1/search?start=0&count=20&lat=" + lat + "&lon=" + long + "&radius=5000&cuisines=" + cuisine + "&sort=real_distance&order=asc";
 
@@ -90,24 +88,79 @@ $(document).ready(function () {
             }
         }).then(function (response) {
 
-            console.log(response);
+            $(".change-heading").text("Pick Somewhere to Eat!");
 
-            $(".change-heading").text("Pick Your Cuisine Below!");
+            var resList = [];
+            var resAddress = [];
+
+            for (i = 0; i < response.restaurants.length; i++) {
+                resList.push(response.restaurants[i].restaurant.name);
+                resAddress.push(response.restaurants[i].restaurant.location.address + " " + response.restaurants[i].restaurant.location.locality);
+            }
 
             //Prints new restaurant
             function newRestaurant() {
 
                 $('.cusine-cards').empty();
 
-                var url = response.restaurants[counter].restaurant.url;
 
+                //Variables and function for google places library
+                var map;
+                var service;
+                var id
+                var photoSearch = resList[counter] + " " + resAddress[counter];
+                var photoSource
+                var image
+
+                function initMap() {
+
+                    map = new google.maps.Map(
+                        document.getElementById("map"));
+
+                    var request = {
+                        query: photoSearch,
+                        fields: ["place_id"]
+                    };
+
+                    var service = new google.maps.places.PlacesService(map);
+
+                    service.findPlaceFromQuery(request, function (results, status) {
+
+                        id = results[0].place_id;
+
+                        request = {
+                            placeId: id,
+                            fields: ["name", "photo"]
+                        }
+
+                        service.getDetails(request, callback);
+
+                        function callback(place, status) {
+                            if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+                                photoSource = place.photos[0].getUrl();
+
+                                img = $('<img>');
+                                img.attr("src", photoSource);
+                                img.addClass("card-img-top resImg");
+                                startDiv.prepend(img);
+
+                            } else {
+                                console.log("no photo");
+                            }
+                        }
+                    });
+                }
+
+                //Creates restaurant card
                 var startDiv = $('<div>');
-                startDiv.addClass("card response");
+                startDiv.addClass("card");
                 startDiv.attr("id", "chosen-restaurant");
 
-                var img = $('<img>');
-                img.addClass("card-img-top");
-                img.attr("src", response.restaurants[counter].restaurant.featured_image);
+                //Call google places function
+                initMap();
+
+                var url = response.restaurants[counter].restaurant.url;
 
                 var divTwo = $('<div>');
                 divTwo.addClass("card-body");
@@ -119,10 +172,6 @@ $(document).ready(function () {
                 var pClass2 = $('<p>');
                 pClass2.addClass("card-text");
                 pClass2.text(response.restaurants[counter].restaurant.location.address);
-
-                var pClass3 = $('<p>');
-                pClass3.addClass("card-text");
-                pClass3.text(response.restaurants[counter].restaurant.location.address);
 
                 var link = $('<a>');
                 link.attr('href', url);
@@ -145,7 +194,9 @@ $(document).ready(function () {
                 //connecting all elements together
                 link.append(selectButton);
                 divTwo.append(pClass, pClass2, link, backButton, nextButton);
-                startDiv.append(img, divTwo);
+                startDiv.append(divTwo);
+
+
 
                 //print to page
                 $('.cusine-cards').append(startDiv);
@@ -157,8 +208,6 @@ $(document).ready(function () {
             $(document).on("click", "#next", function () {
 
                 if (counter === 19) {
-                    //Bring back to cuisine types page?
-                    console.log("out of choices");
                     return
                 };
 
@@ -170,7 +219,6 @@ $(document).ready(function () {
             $(document).on("click", "#back", function () {
 
                 if (counter === 0) {
-                    console.log("first choice");
                     return
                 };
 

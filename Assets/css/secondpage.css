@@ -51,10 +51,7 @@ body {
 .cusine-cards {
     display: none;
     flex-wrap: wrap;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
 }
 
 .card {
@@ -97,4 +94,17 @@ body {
 
 .change-heading {
     margin-top: 18px;
+}
+
+#chosen-restaurant {
+    width: 400px;
+}
+
+#chosen-restaurant:hover {
+    opacity: 1;
+}
+
+.resImg {
+    width: 100%;
+    height: 350px;
 }
