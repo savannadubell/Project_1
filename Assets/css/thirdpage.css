@@ -1,6 +1,11 @@
 body {
-    background: whitesmoke;
+    background: #222222;
 }
+
+.jumbotron { 
+    background: #222222;
+}
+
 #subHeading {
     font-family: 'Arial', sans-serif;
     color: #0071BC;
