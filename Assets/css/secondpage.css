@@ -1,5 +1,9 @@
 body {
-    background: whitesmoke;
+    background: #222222;;
+}
+
+.jumbotron {
+    background: #222222;
 }
 
 #subHeading {
@@ -75,7 +79,7 @@ body {
 }
 
 .card-body {
-    background-color: lightgray;
+    background-color: #222222;;
 }
 
 .card-img-top {
