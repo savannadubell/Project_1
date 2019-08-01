@@ -28,10 +28,14 @@
 </head>
 
 <body id="userLocation">
-    <div class="jumbotron">
+        <div class="jumbotron">
+                <IMG class="displayed" src="Assets/Images/FeedMe.png">
+                <h2 class="text-center change-heading" id="subHeading">What Is Your Location?</h2>
+            </div>
+    <!-- <div class="jumbotron">
         <IMG class="displayed" src="Assets/Images/FeedMe.png">
         <h2 class="text-center change-heading" id="subHeading">What Is Your Location?</h2>
-    </div>
+    </div> -->
 
     <p class="geoError"></p>
 
@@ -41,11 +45,12 @@
                 <label for="street" class="label">Street Number</label>
                 <input type="text" class="form-control" id="street" placeholder="123 Main Street">
             </div>
+            <br>
             <div class="form-group">
                 <label for="city" class="label">City</label>
                 <input type="text" class="form-control" id="city" placeholder="Salt Lake City">
             </div>
-
+            <br>
             <div class="form-group">
                 <label for="state" class="label">State</label>
                 <select class="form-control" id="state" placeholder="Utah">
